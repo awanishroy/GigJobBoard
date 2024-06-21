@@ -1,0 +1,53 @@
+{% extends 'admin/layouts/base.html' %}
+{% block title %}{{ title }} - My Website{% endblock %}
+{% block content %}
+
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">{{ title }}</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">{{ title }}</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Your form for updating or adding a user goes here -->
+    <section class="content">
+        <div class="card">
+            <div class="card-body">
+                {% comment %} <form method="POST" action="{% if user %}{% url 'update_user' user.id %}{% else %}{% url 'add_user' %}{% endif %}">
+                    {% csrf_token %} {% endcomment %}
+                    <!-- Form fields -->
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" >
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" class="form-control" id="age" name="age" >
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea class="form-control" id="address" name="address" rows="2"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile">Mobile</label>
+                        <input type="text" class="form-control" id="mobile" name="mobile">
+                    </div>
+                    <!-- Add more fields as needed -->
+                    <button type="submit" class="btn btn-primary">{{ action }}</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock %}
