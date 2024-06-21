@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'GigJobBoard.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cbt_gig_updated',
+        'NAME': 'cbt_gig_db',
         'USER': 'root',
         'PASSWORD': 'This@golu123',
         'HOST': 'localhost',

@@ -3,18 +3,19 @@ from django.contrib.auth.models import User  # Import the User model
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
     return render(request, 'website/index.html')
-
+@login_required
 def UserList(request):
 
     context = {
         'users': ['User1', 'User2', 'User3'],
     }
     return render(request, 'admin/user_list.html', context)
-
+@login_required
 def FatchUserList(request):
     users = User.objects.all().values('id', 'username', 'email', 'first_name', 'last_name')
     data = list(users)  # Convert QuerySet to list for JSON serialization
@@ -32,7 +33,7 @@ def FatchUserList(request):
             </div>
         """
     return JsonResponse({'data': data})
-
+@login_required
 def EditUser(request, user_id=None):
     if user_id is None:
         context = {
